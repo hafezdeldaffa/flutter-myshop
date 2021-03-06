@@ -1,4 +1,5 @@
 # myshop
+This is a dummy project about online store in flutter.
 
 ## Features
 
