@@ -96,6 +96,7 @@ class _AuthCardState extends State<AuthCard>
       }
       showErrorDialog(errorMessage);
     } catch (e) {
+      print(e);
       var errorMessage = 'Could not authenticate you. Please try again later';
       showErrorDialog(errorMessage);
     }
@@ -199,26 +200,34 @@ class _AuthCardState extends State<AuthCard>
                 if (_isLoading)
                   CircularProgressIndicator()
                 else
-                  RaisedButton(
+                  ElevatedButton(
                     child:
                         Text(_authMode == AuthMode.Login ? 'LOGIN' : 'SIGN UP'),
                     onPressed: _submit,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                    style: ElevatedButton.styleFrom(
+                      shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(30.0),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30.0, vertical: 8.0),
+                      primary: Theme.of(context).primaryColor,
+                      textStyle: TextStyle(
+                          color:
+                              Theme.of(context).primaryTextTheme.button.color),
                     ),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30.0, vertical: 8.0),
-                    color: Theme.of(context).primaryColor,
-                    textColor: Theme.of(context).primaryTextTheme.button.color,
                   ),
-                FlatButton(
+                TextButton(
                   child: Text(
-                      '${_authMode == AuthMode.Login ? 'SIGNUP' : 'LOGIN'}'),
+                    '${_authMode == AuthMode.Login ? 'SIGNUP' : 'LOGIN'}',
+                    style: TextStyle(color: Colors.black),
+                  ),
                   onPressed: _switchAuthMode,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 30.0, vertical: 4),
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  textColor: Theme.of(context).primaryColor,
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30.0, vertical: 4),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    textStyle: TextStyle(color: Theme.of(context).primaryColor),
+                  ),
                 ),
               ],
             ),

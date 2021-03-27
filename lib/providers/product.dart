@@ -29,9 +29,18 @@ class Product with ChangeNotifier {
     final _oldStatus = isFavorite;
     isFavorite = !isFavorite;
     notifyListeners();
+    final stringUrl =
+        'https://flutter-myshop-6969-default-rtdb.firebaseio.com/userFavorite/$userId/$id.json?auth=$token';
+
     try {
       final response = await http.put(
-        'https://flutter-myshop-6969-default-rtdb.firebaseio.com/userFavorite/$userId/$id.json?auth=$token',
+        // Uri.https(
+        //   'flutter-myshop-6969-default-rtdb.firebaseio.com',
+        //   '/userFavorite/$userId/$id.json',
+        //   {'auth': '$token'},
+        // ),
+
+        Uri.parse(stringUrl),
         body: json.encode(isFavorite),
       );
       if (response.statusCode >= 400) {

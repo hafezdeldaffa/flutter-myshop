@@ -47,6 +47,7 @@ class ProductItem extends StatelessWidget {
                                   product.imageUrl,
                                 ),
                                 fit: BoxFit.contain,
+                                height: 120,
                               ),
                             ),
                           ),

@@ -21,7 +21,6 @@ class UserProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final scaffold = Scaffold.of(context);
 
     return RefreshIndicator(
       onRefresh: () => _refreshProduct(context),
@@ -46,7 +45,7 @@ class UserProductItem extends StatelessWidget {
                                 listen: false)
                             .removeProduct(id);
                       } catch (error) {
-                        scaffold.showSnackBar(
+                        ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text('Deleting failed!'),
                           ),

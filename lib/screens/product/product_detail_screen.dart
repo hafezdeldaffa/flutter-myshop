@@ -112,8 +112,11 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                   Container(
                     child: Consumer<CartProvider>(
-                      builder: (context, cart, _) => RaisedButton(
-                        color: Colors.redAccent,
+                      builder: (context, cart, _) => ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.red, // background
+                          onPrimary: Colors.white, // foreground
+                        ),
                         child: const Text(
                           'Add to cart',
                           style: TextStyle(
@@ -124,8 +127,8 @@ class ProductDetailScreen extends StatelessWidget {
                         onPressed: () {
                           cart.addItems(loadedData.id, loadedData.title,
                               loadedData.price);
-                          Scaffold.of(context).hideCurrentSnackBar();
-                          Scaffold.of(context).showSnackBar(
+                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                          ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text('Sucessfully added to cart!'),
                               action: SnackBarAction(
@@ -137,6 +140,8 @@ class ProductDetailScreen extends StatelessWidget {
                               ),
                             ),
                           );
+                          // Scaffold.of(context).hideCurrentSnackBar();
+                          // Scaffold.of(context).showSnackBar();
                         },
                       ),
                     ),

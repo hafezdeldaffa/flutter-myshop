@@ -32,8 +32,17 @@ class Orders with ChangeNotifier {
   }
 
   Future<void> fetchAndSetOrders() async {
-    final url =
-        'https://flutter-myshop-6969-default-rtdb.firebaseio.com/orders/$userId.json?auth=$authToken';
+    // final stringUrl =
+    //     'https://flutter-myshop-6969-default-rtdb.firebaseio.com/orders/$userId.json?auth=$authToken';
+
+    // final url = Uri.https(
+    //   'flutter-myshop-6969-default-rtdb.firebaseio.com',
+    //   '/orders/$userId.json',
+    //   {'auth': '$authToken'},
+    // );
+
+    final url = Uri.parse(
+        'https://flutter-myshop-6969-default-rtdb.firebaseio.com/orders/$userId.json?auth=$authToken');
     try {
       final response = await http.get(url);
       final List<OrderItem> loadedOrders = [];
@@ -70,11 +79,18 @@ class Orders with ChangeNotifier {
 
   Future<void> addOrder(List<CartItems> cartProduct, double total) async {
     try {
-      final url =
+      final stringUrl =
           'https://flutter-myshop-6969-default-rtdb.firebaseio.com/orders/$userId.json?auth=$authToken';
+
       final timeStamp = DateTime.now();
       final response = await http.post(
-        url,
+        // Uri.https(
+        //   'flutter-myshop-6969-default-rtdb.firebaseio.com',
+        //   '/orders/$userId.json',
+        //   {'auth': '$authToken'},
+        // ),
+
+        Uri.parse(stringUrl),
         body: json.encode({
           'amount': total,
           'dateTime': timeStamp.toIso8601String(),

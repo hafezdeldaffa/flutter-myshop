@@ -10,13 +10,13 @@ class Alert extends StatelessWidget {
     if (!_isError) {
       return Row(
         children: [
-          FlatButton(
+          TextButton(
             onPressed: () {
               Navigator.of(context).pop(false);
             },
             child: const Text('NO'),
           ),
-          FlatButton(
+          TextButton(
             onPressed: () {
               Navigator.of(context).pop(true);
             },
@@ -25,7 +25,7 @@ class Alert extends StatelessWidget {
         ],
       );
     } else {
-      return FlatButton(
+      return TextButton(
         onPressed: () {
           Navigator.of(context).pop(true);
         },

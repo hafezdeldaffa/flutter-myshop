@@ -23,7 +23,6 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _pages = [
       {'pages': ProductOverviewScreen()},
@@ -72,16 +71,15 @@ class _TabsScreenState extends State<TabsScreen> {
               ),
               BottomNavigationBarItem(
                 backgroundColor: Theme.of(context).primaryColor,
-                icon: FlatButton(
-                  padding: EdgeInsets.only(),
+                icon: TextButton(
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.only(top: 16),
+                  ),
                   child: Column(
                     children: const [
-                      Padding(
-                        padding: EdgeInsets.only(top: 15),
-                        child: Icon(
-                          Icons.exit_to_app,
-                          color: Colors.white,
-                        ),
+                      Icon(
+                        Icons.exit_to_app,
+                        color: Colors.white,
                       ),
                       Text(
                         'Logout',

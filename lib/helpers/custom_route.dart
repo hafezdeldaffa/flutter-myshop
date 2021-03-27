@@ -16,7 +16,6 @@ class CustomRoute<T> extends MaterialPageRoute<T> {
     Animation<double> secondaryAnimation,
     Widget child,
   ) {
-    // TODO: implement buildTransitions
     if (settings.name == '/') {
       return child;
     }
@@ -36,7 +35,6 @@ class CustomPageTransitionBuilder implements PageTransitionsBuilder {
     Animation<double> secondaryAnimation,
     Widget child,
   ) {
-    // TODO: implement buildTransitions
     if (route.settings.name == '/') {
       return child;
     }

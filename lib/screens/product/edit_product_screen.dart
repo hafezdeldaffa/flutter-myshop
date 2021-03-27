@@ -107,7 +107,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
             title: Text('An error occured!'),
             content: Text('Something went wrong'),
             actions: [
-              FlatButton(
+              TextButton(
                 child: Text('Okay'),
                 onPressed: () => Navigator.of(context).pop(),
               )
@@ -328,7 +328,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                       SizedBox(
                         height: mediaQuery.size.height * 0.05,
                       ),
-                      FlatButton(
+                      TextButton(
                         onPressed: _saveForm,
                         child: Container(
                           width: mediaQuery.size.height * 0.7,

@@ -30,12 +30,12 @@ class Auth with ChangeNotifier {
 
   Future<void> _authenticate(
       String email, String password, String urlNamed) async {
-    final url =
+    String url =
         'https://identitytoolkit.googleapis.com/v1/accounts:$urlNamed?key=AIzaSyCt8fORm-21Kw3DRPZvZcXpvJDk52OiLvI';
 
     try {
       final response = await http.post(
-        url,
+        Uri.parse(url),
         body: json.encode({
           'email': email,
           'password': password,
@@ -58,6 +58,7 @@ class Auth with ChangeNotifier {
       );
 
       print(json.decode(response.body));
+
       _autoLogout();
       notifyListeners();
 
